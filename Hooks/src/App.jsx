@@ -7,7 +7,7 @@ function App() {
   const [name, setName] = useState("Jawad Amin");
    const AddValue=()=>(
     count<10?
-    setCount(count+1): alert("You cannot got more then 10 Go to drink lemon juice"),
+    setCount(count+1): alert("You cannot got more than 10 welle bete ho jaa koe aor kaam kar"),
     setName(name+1)
    );
    const RemoveValue=()=>(
