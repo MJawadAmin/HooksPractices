@@ -34,6 +34,7 @@ function App() {
       {}</button>
       {/* <PasswordGenerator/> */}
       </div>
+      <br/>
       <Hooks/>
       
    </>
