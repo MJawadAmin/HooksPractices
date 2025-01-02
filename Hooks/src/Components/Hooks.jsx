@@ -26,14 +26,14 @@ const Hooks = () => {
 
   return (
     <div>
-      <div className="bg-slate-400 p-4">  
+      <div className="bg-slate-400 p-4 rounded-lg">  
         <div className="mt-4">
           <label>Generated Password:</label>
           <input
             type="text"
             value={password}
             readOnly
-            className="ml-2 p-1 border w-full"
+            className="ml-2 p-1 border w-full rounded-lg"
           />
            <br />
            <br />
@@ -46,7 +46,7 @@ const Hooks = () => {
             min="4"
             max="20"
             onChange={(e) => setLength(Number(e.target.value))}
-            className="ml-2 p-1 border"
+            className="ml-2 p-1 border rounded-lg"
           />
         </label>
         <br />
