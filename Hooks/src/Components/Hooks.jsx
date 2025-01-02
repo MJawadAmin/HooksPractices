@@ -1,35 +1,76 @@
-import {useCallback, useEffect, useState} from 'react'
+import { useState, useEffect } from "react";
 
 const Hooks = () => {
-    const [length , setLength] = useState(8);
-    const [numberAllowed, setNumberAllowed] = useState(false);
-    const [charAllowed, setCharAllowed] = useState(false);
-    const [password, setPassword] = useState(""); 
-    const PasswordGenarator= useEffect(()=>{
-        const pass= ""
-        let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"; // Use 'let' instead of 'const'
-        
-        if (numberAllowed) str += "0123456789"; // Now this works fine
-        if (charAllowed) str += "!@#$%^&*()_+";
-        
-        // Continue with your logic
-        
-        for (let i =   1; i < length; i++) {
-            let char = Math.floor(Math.random)* str.length + 1
-            pass = str.charAt(char)
-    }
-    setPassword(pass)
+  const [length, setLength] = useState(8);
+  const [numberAllowed, setNumberAllowed] = useState(false);
+  const [charAllowed, setCharAllowed] = useState(false);
+  const [password, setPassword] = useState("");
 
-        
-},[length , numberAllowed, charAllowed, setPassword])
+  const generatePassword = () => {
+    let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    if (numberAllowed) str += "0123456789";
+    if (charAllowed) str += "!@#$%^&*()_+";
+
+    let pass = "";
+    for (let i = 0; i < length; i++) {
+      const charIndex = Math.floor(Math.random() * str.length);
+      pass += str.charAt(charIndex);
+    }
+
+    setPassword(pass);
+  };
+
+  useEffect(() => {
+    generatePassword();
+  }, [length, numberAllowed, charAllowed]);
+
   return (
     <div>
-      <div className='bg-slate-400 '>
-        <input type='text' readOnly> {password}</input>
-         </div>
-      
+      <div className="bg-slate-400 p-4">
+        <label>
+          Length:
+          <input
+            type="number"
+            value={length}
+            min="4"
+            max="20"
+            onChange={(e) => setLength(Number(e.target.value))}
+            className="ml-2 p-1 border"
+          />
+        </label>
+        <br />
+        <label>
+          Include Numbers:
+          <input
+            type="checkbox"
+            checked={numberAllowed}
+            onChange={(e) => setNumberAllowed(e.target.checked)}
+            className="ml-2"
+          />
+        </label>
+        <br />
+        <label>
+          Include Special Characters:
+          <input
+            type="checkbox"
+            checked={charAllowed}
+            onChange={(e) => setCharAllowed(e.target.checked)}
+            className="ml-2"
+          />
+        </label>
+        <br />
+        <div className="mt-4">
+          <label>Generated Password:</label>
+          <input
+            type="text"
+            value={password}
+            readOnly
+            className="ml-2 p-1 border w-full"
+          />
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Hooks
+export default Hooks;
