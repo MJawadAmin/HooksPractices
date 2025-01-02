@@ -26,7 +26,7 @@ const Hooks = () => {
     passwordRef.current?.select();
     window.navigator.clipboard.writeText(password);
     setCopyButtonText("Copied"); // Change button text to "Copied"
-    setTimeout(() => setCopyButtonText("Copy"), 2000); // Reset to "Copy" after 2 seconds
+    setTimeout(() => setCopyButtonText("Copy"), 5000); // Reset to "Copy" after 2 seconds
   }, [password]);
 
   useEffect(() => {
