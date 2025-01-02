@@ -43,8 +43,8 @@ const Hooks = () => {
           <input
             type="number"
             value={length}
-            min="4"
-            max="20"
+            min={4}
+            max={100}
             onChange={(e) => setLength(Number(e.target.value))}
             className="ml-2 p-1 border rounded-lg"
           />
