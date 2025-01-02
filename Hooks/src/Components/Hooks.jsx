@@ -7,15 +7,26 @@ const Hooks = () => {
     const [password, setPassword] = useState(""); 
     const PasswordGenarator= useEffect(()=>{
         const pass= ""
-        const str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+        let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"; // Use 'let' instead of 'const'
+        
+        if (numberAllowed) str += "0123456789"; // Now this works fine
+        if (charAllowed) str += "!@#$%^&*()_+";
+        
+        // Continue with your logic
+        
         for (let i =   1; i < length; i++) {
             let char = Math.floor(Math.random)* str.length + 1
-
+            pass = str.charAt(char)
     }
+    setPassword(pass)
+
         
 },[length , numberAllowed, charAllowed, setPassword])
   return (
     <div>
+      <div className='bg-slate-400 '>
+        <input type='text' readOnly> {password}</input>
+         </div>
       
     </div>
   )

@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import './App.css'
+// import PasswordGenerator from './Components/PasswordGenerator';
+import Hooks from './Components/Hooks';
 
 
 function App() {
@@ -30,7 +32,9 @@ function App() {
     <br/>
     <button onClick={RemoveValue} className='bg-slate-900 text-red-800 w-44 h-10 rounded-md'> Remove   
       {}</button>
+      {/* <PasswordGenerator/> */}
       </div>
+      <Hooks/>
       
    </>
   )
