@@ -1,24 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 const Hooks = () => {
   const [length, setLength] = useState(8);
-  const [numberAllowed, setNumberAllowed] = useState(false);
-  const [charAllowed, setCharAllowed] = useState(false);
+  const [numberAllowed, setNumberAllowed] = useState(true);
+  const [charAllowed, setCharAllowed] = useState(true);
   const [password, setPassword] = useState("");
 
-  const generatePassword = () => {
+  const generatePassword = useCallback(() => {
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     if (numberAllowed) str += "0123456789";
     if (charAllowed) str += "!@#$%^&*()_+";
 
     let pass = "";
     for (let i = 0; i < length; i++) {
-      const charIndex = Math.floor(Math.random() * str.length);
+      const charIndex = Math.floor(Math.random() * str.length +1);
       pass += str.charAt(charIndex);
     }
 
     setPassword(pass);
-  };
+  });
 
   useEffect(() => {
     generatePassword();
@@ -38,7 +38,32 @@ const Hooks = () => {
     </div>
     <div>
     <div>
-        <input></input>
+    <label>Length {length}</label>
+        <input type="range"
+        value={length}
+        onChange={(e) => setLength(e.target.value)}
+        min={4}
+        max={20}
+        className="cursor-pointer"/>
+
+ <label> Numbers{numberAllowed}</label>
+ <input type="checkbox"
+ defaultChecked={numberAllowed}
+ id="numberInput"
+ onChange={()=>{
+  setNumberAllowed(!numberAllowed);
+ }}
+ />
+
+ 
+ <label> Special Chars {charAllowed}</label>
+ <input type="checkbox"
+ defaultChecked={charAllowed}
+ id="specialcharsinput"
+ onChange={()=>{
+  setCharAllowed( (currentState)=> !currentState );
+ }}
+ />
     </div>
     </div>
    </div>
