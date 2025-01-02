@@ -2,6 +2,8 @@ import { useState } from 'react'
 import './App.css'
 // import PasswordGenerator from './Components/PasswordGenerator';
 import Hooks from './Components/Hooks';
+import PasswordGenerator from './Components/PasswordGenerator';
+import PasswordGenerator_1 from './Components/PasswordGenerator_1'
 
 
 function App() {
@@ -36,6 +38,8 @@ function App() {
       </div>
       <br/>
       <Hooks/>
+      <br/>
+      <PasswordGenerator_1/>
       
    </>
   )
