@@ -31,7 +31,7 @@ function PasswordGenerator() {
   };
 
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif', padding: '20px' }}>
+    <div style={{ fontFamily: 'Arial, sans-serif', padding: '21px' }}>
       <h1>Password Generator</h1>
       <label>
         Password Length:
