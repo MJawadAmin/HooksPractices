@@ -27,7 +27,18 @@ const Hooks = () => {
   return (
     <div>
       <div className="bg-slate-400 p-4">
-        <label>
+       
+        <br />
+        <div className="mt-4">
+          <label>Generated Password:</label>
+          <input
+            type="text"
+            value={password}
+            readOnly
+            className="ml-2 p-1 border w-full"
+          />
+
+<label>
           Length:
           <input
             type="number"
@@ -58,15 +69,6 @@ const Hooks = () => {
             className="ml-2"
           />
         </label>
-        <br />
-        <div className="mt-4">
-          <label>Generated Password:</label>
-          <input
-            type="text"
-            value={password}
-            readOnly
-            className="ml-2 p-1 border w-full"
-          />
         </div>
       </div>
     </div>
