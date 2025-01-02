@@ -1,10 +1,11 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback , useRef } from "react";
 
 const Hooks = () => {
   const [length, setLength] = useState(8);
   const [numberAllowed, setNumberAllowed] = useState(true);
   const [charAllowed, setCharAllowed] = useState(true);
   const [password, setPassword] = useState("");
+  const passwordRef= useRef(null)
 
   const generatePassword = useCallback(() => {
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -19,6 +20,10 @@ const Hooks = () => {
 
     setPassword(pass);
   });
+  const passwordCopyFromClip=useCallback(()=>{
+    passwordRef.current?.select()
+    window.navigator.clipboard.writeText(password)
+  },[password])
 
   useEffect(() => {
     generatePassword();
@@ -33,8 +38,11 @@ const Hooks = () => {
         className="w-full outline-none py-1 px-2"
         value={password}
         readOnly
+        ref={passwordRef}
         /> 
-        <button className="bg-blue-700 text-white rounded-md px-5 py-3">copy</button>
+        <button className="bg-blue-700 text-white rounded-md px-5 py-3"
+        onClick={passwordCopyFromClip}
+        >copy</button>
     </div>
     <div>
     <div>
